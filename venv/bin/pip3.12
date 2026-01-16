@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/joel-erreyes/cfgs/cicloCiber/MP03 - Posada en producció segura/ra 2/PRAC_02_U2_M3_Gestió del Codi, Git i TDD i Selenium/M03-ProjecteVault/venv/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
