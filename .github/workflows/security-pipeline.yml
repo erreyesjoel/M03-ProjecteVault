@@ -1,0 +1,27 @@
+name: Secure Vault Pipeline
+
+on: [push]
+
+jobs:
+  security_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codi
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instal·lar dependències
+        run: |
+          pip install -r requirements.txt
+
+      - name: Pas 1 - Unit Testing (Caixa Blanca)
+        run: python3 test_vault.py
+
+      - name: Pas 2 - Security Scan (Caixa Negra)
+        run: |
+          # A GitHub Actions necessitem el mode headless de Chrome
+          python3 attack_bot.py
